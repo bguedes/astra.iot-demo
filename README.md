@@ -179,6 +179,12 @@ curl -X GET "http://127.0.0.1:8083/connectors/demo-iot-astra/status" | jq
 }
 ```
 
+**Import Astra Notebook**
+
+Import iot-demo_studio_notebook.tar in the Astra Studio
+
 **Launch the data producer**
 
+```
 java -jar iot-kafka-producer-1.0.0.jar
+```
