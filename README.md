@@ -36,7 +36,9 @@ sudo chmod +x /usr/local/bin/docker-compose
 You need to have an Astra database setup:
 
 database = demo
+
 username = datastax
+
 password = datastax
 
 ***Jq for Json viewing***
