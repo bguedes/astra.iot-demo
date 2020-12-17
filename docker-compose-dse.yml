@@ -2,6 +2,48 @@ version: '3'
 
 services:
 
+  studio:
+    image: datastax/dse-studio:6.8.6
+    environment:
+      - DS_LICENSE=accept
+    ports:
+      - "9091:9091"
+    depends_on:
+      - seed_node
+    container_name: "studio"
+
+  seed_node:
+    image: datastax/dse-server:6.8.7
+    container_name: seed_node
+    command: [ -s -k -g]
+    environment:
+      - DS_LICENSE=accept
+      - DC=DC1
+      - JVM_EXTRA_OPTS=-Xms1g -Xmx4g
+      - NUM_TOKENS=8
+    # Allow DSE to lock memory with mlock
+    cap_add:
+    - IPC_LOCK
+    ulimits:
+      memlock: -1
+
+  node:
+    image: datastax/dse-server:6.8.7
+    command: [ -s -k -g]
+    environment:
+      - DS_LICENSE=accept
+      - SEEDS=seed_node
+      - DC=DC1
+      - JVM_EXTRA_OPTS=-Xms1g -Xmx4g
+      - NUM_TOKENS=8
+    links:
+      - seed_node
+    # Allow DSE to lock memory with mlock
+    cap_add:
+      - IPC_LOCK
+    ulimits:
+      memlock: -1
+
   zookeeper:
     image: confluentinc/cp-zookeeper:latest
     container_name: zookeeper
