@@ -1,5 +1,13 @@
 **Pre-requisites**
 
+***Java***  
+
+https://www.java.com/en/download/help/download_options.html
+
+For linux:
+
+https://linuxhint.com/install_java_linux_mint/
+
 ***Docker***
 
 You need to install Docker and Docker-compose on your computer:
@@ -170,3 +178,7 @@ curl -X GET "http://127.0.0.1:8083/connectors/demo-iot-astra/status" | jq
 "type": "sink"
 }
 ```
+
+**Launch the data producer**
+
+java -jar iot-kafka-producer-1.0.0.jar
