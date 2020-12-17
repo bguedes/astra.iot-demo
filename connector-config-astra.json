@@ -1,0 +1,13 @@
+{
+  "name": "demo-iot-astra",
+  "config": {
+    "connector.class": "com.datastax.kafkaconnector.DseSinkConnector",
+    "cloud.secureConnectBundle": "/home/secure-connect-demo.zip",
+    "auth.username": "datastax",
+    "auth.password": "datastax",
+    "tasks.max": "10",
+    "topics": "iot-data-event",
+    "topic.iot-data-event.demo.iot_data_event_raw.mapping": "vehicleid=value.vehicleId,vehicletype=value.vehicleType,routeid=value.routeId,longitude=value.longitude,latitude=value.latitude,timestampcol=value.timestamp,speed=value.speed,fuellevel=value.fuelLevel",
+    "topic.iot-data-event.demo.iot_data_event_raw.consistencyLevel": "LOCAL_QUORUM"
+  }
+}
